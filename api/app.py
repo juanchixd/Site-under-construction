@@ -6,7 +6,7 @@ import threading
 app = Flask(__name__)
 
 REDIRECT_URL = os.environ.get("REDIRECT_URL")
-CHECK_INTERVAL = timedelta(minutes=os.environ.get("CHECK_INTERVAL"))
+CHECK_INTERVAL = timedelta(minutes=int(os.environ.get("CHECK_INTERVAL")))
 
 server_online = True
 
@@ -32,7 +32,7 @@ schedule_server_check()
 
 @app.route('/')
 def index():
-    if not check_server_status():
+    if not server_online:
         return redirect(url_for('mantenimiento'))
     else:
         return redirect(REDIRECT_URL)
