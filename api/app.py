@@ -27,12 +27,6 @@ def schedule_server_check():
     check_server_status()
 
 
-def schedule_server_check():
-    threading.Timer(CHECK_INTERVAL.total_seconds(),
-                    schedule_server_check).start()
-    check_server_status()
-
-
 schedule_server_check()
 
 
