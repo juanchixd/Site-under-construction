@@ -6,6 +6,8 @@ import threading
 app = Flask(__name__)
 
 REDIRECT_URL = os.environ.get("REDIRECT_URL")
+NAME = os.environ.get("NAME")
+API_KEY = os.environ.get("API_KEY")
 CHECK_INTERVAL = timedelta(minutes=int(os.environ.get("CHECK_INTERVAL")))
 
 server_online = True
@@ -14,8 +16,22 @@ server_online = True
 def check_server_status():
     global server_online
     try:
-        response = requests.get(REDIRECT_URL)
-        server_online = response.status_code == 200
+        url = "https://api.uptimerobot.com/v2/getMonitors"
+        payload = "api_key=" + API_KEY + "&format=json&logs=1"
+        headers = {
+            'content-type': "application/x-www-form-urlencoded",
+            'cache-control': "no-cache"
+        }
+        response = requests.request("POST", url, data=payload, headers=headers)
+        data_json = response.json()
+        if data_json['stat'] == "ok":
+            for monitor in data_json['monitors']:
+                if monitor['friendly_name'] == NAME:
+                    server_online = monitor['status'] == 2
+                    break
+        else:
+            print(f"Error checking server status: {data_json}")
+            server_online = False
     except Exception as e:
         print(f"Error checking server status: {e}")
         server_online = False
