@@ -8,7 +8,7 @@ app = Flask(__name__)
 REDIRECT_URL = os.environ.get("REDIRECT_URL")
 NAME = os.environ.get("NAME")
 API_KEY = os.environ.get("API_KEY")
-CHECK_INTERVAL = timedelta(minutes=int(os.environ.get("CHECK_INTERVAL")))
+CHECK_INTERVAL = timedelta(seconds=int(os.environ.get("CHECK_INTERVAL")))
 
 server_online = True
 
@@ -22,7 +22,8 @@ def check_server_status():
             'content-type': "application/x-www-form-urlencoded",
             'cache-control': "no-cache"
         }
-        response = requests.request("POST", url, data=payload, headers=headers)
+        response = requests.request(
+                "POST", url, data=payload, headers=headers)
         data_json = response.json()
         if data_json['stat'] == "ok":
             for monitor in data_json['monitors']:
