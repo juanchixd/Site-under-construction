@@ -1,16 +1,16 @@
 from flask import Flask, render_template, redirect, url_for
-from datetime import datetime, timedelta
-import os
-import requests
-import threading
+# from datetime import datetime, timedelta
+# import os
+# import requests
+# import threading
 app = Flask(__name__)
 
-REDIRECT_URL = os.environ.get("REDIRECT_URL")
+# REDIRECT_URL = os.environ.get("REDIRECT_URL")
 # NAME = os.environ.get("NAME")
 # API_KEY = os.environ.get("API_KEY")
 # CHECK_INTERVAL = timedelta(seconds=int(os.environ.get("CHECK_INTERVAL")))
 
-server_online = True
+server_online = False
 
 
 # def check_server_status():
@@ -49,20 +49,21 @@ server_online = True
 
 @app.route('/')
 def index():
-    if not server_online:
+    # if not server_online:
         return redirect(url_for('mantenimiento'))
-    else:
-        return redirect(REDIRECT_URL)
+    # else:
+    #     return redirect(REDIRECT_URL)
 
 
 @app.route('/mantenimiento')
 def mantenimiento():
-    return render_template('index.html', now=datetime.now())
+      return render_template('index.html')  
+    # return render_template('index.html', now=datetime.now())
 
 
-@app.route('/<path:dummy>')
-def redirigir_a_inicio(dummy):
-    return redirect(url_for('index'))
+# @app.route('/<path:dummy>')
+# def redirigir_a_inicio(dummy):
+#     return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

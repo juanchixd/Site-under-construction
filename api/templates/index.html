@@ -2,40 +2,97 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="{{ url_for('static', filename='favicon.ico') }}"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sitio Migrado</title>
+
+    <meta
+      http-equiv="refresh"
+      content="8;url=https://market.cerrajeriagonzalito2.com.ar"
     />
-    <title>Sitio web en construcción</title>
-    <link
-      href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="static/css/style-dist.css" />
+
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background-color: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: #333;
+      }
+      .card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        max-width: 450px;
+        width: 90%;
+      }
+      h1 {
+        color: #1f2937;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        color: #6b7280;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+      }
+      .btn {
+        display: inline-block;
+        background-color: #2563eb; /* Azul estándar, cambiable */
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.2s;
+      }
+      .btn:hover {
+        background-color: #1d4ed8;
+      }
+      .timer {
+        margin-top: 1.5rem;
+        font-size: 0.875rem;
+        color: #9ca3af;
+      }
+    </style>
   </head>
   <body>
-    <div class="coverPage">
-      <div class="__coverPage-content">
-        <h1>Cerrajeria Gonzalito II</h1>
-        <h2>Pronto estaremos de vuelta</h2>
-        <p>Estamos trabajando para ofrecerte un mejor servicio</p>
-        <div class="socialMedia">
-          <a class="socialIcon" href="mailto:contacto@juangonzalez.com.ar"
-            ><i class="fas fa-envelope"></i
-          ></a>
-        </div>
-        <div class="credits ml-auto">
-          <span class="copyright">
-            © {{ now.strftime('%Y') }}, made with 🧉 by
-            <a href="https://juangonzalez.com.ar">Juan Gonzalez</a>
-          </span>
-        </div>
+    <div class="card">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#2563eb"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        style="margin-bottom: 1rem"
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
+
+      <h1>Esta página ya no está disponible</h1>
+      <p>
+        Hemos mudado nuestros servicios. Ahora puedes encontrarnos en nuestra
+        nueva plataforma.
+      </p>
+
+      <a href="https://market.cerrajeriagonzalito2.com.ar" class="btn">
+        Ir al nuevo sitio
+      </a>
+
+      <div class="timer">
+        Serás redirigido automáticamente en unos segundos...
       </div>
     </div>
   </body>
